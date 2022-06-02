@@ -1,0 +1,17 @@
+SELECT tbl_orderan_user.key_user_id, tbl_orderan_user.status_order FROM tbl_orderan_user GROUP BY tbl_orderan_user.key_user_id HAVING count(*) > 1
+SELECT * FROM tbl_orderan_user WHERE (tbl_orderan_user.status_order='pending' AND key_user_id='5e9f11db5479d2.87619332')
+SELECT tbl_menu_list.nama_menu, tbl_orderan_user.jumlah, tbl_orderan_user.price FROM tbl_orderan_user INNER JOIN tbl_menu_list ON tbl_menu_list.id_menu = tbl_orderan_user.id_menu WHERE (tbl_orderan_user.status_order='pending' AND key_user_id='5e9f11db5479d2.87619332')
+SELECT SUM(price) FROM tbl_orderan_user WHERE (tbl_orderan_user.status_order='pending' AND key_user_id='5e9b34fa893b33.94661534')
+ <tbody align="center">
+                    <?php 
+                            $result = mysqli_query($mysqli, "SELECT tbl_menu_list.nama_menu, tbl_orderan_user.jumlah, tbl_orderan_user.price FROM tbl_orderan_user INNER JOIN tbl_menu_list ON tbl_menu_list.id_menu = tbl_orderan_user.id_menu WHERE (tbl_orderan_user.status_order=pending AND key_user_id='5e9f11db5479d2.87619332')");
+                            while($orderan_detail = mysqli_fetch_array($result)) {         
+                            
+                    ?>    
+                    <tr>
+                        <td><?php echo $orderan_detail['nama_menu']; ?></td>
+                        <td><?php echo $orderan_detail['jumlah']; ?></td>
+                        <td><?php echo $orderan_detail['price']; ?></td>
+                    </tr>       
+                    <?php }?>
+                    </tbody>
